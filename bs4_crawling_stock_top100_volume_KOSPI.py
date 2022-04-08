@@ -34,6 +34,6 @@ df_data.columns = col_data[0]
 df_data = df_data.set_index('N')
 today = str(datetime.today()).split('.')[0]
 today = today.replace(' ', '_').replace(':', '-')
-save_file_name = 'volume_top_10_korea_stock_' + today + '.csv'
+save_file_name = 'volume_top_100_korea_stock_' + today + '.csv'
 
 df_data.to_csv(save_file_name, encoding='cp949')
