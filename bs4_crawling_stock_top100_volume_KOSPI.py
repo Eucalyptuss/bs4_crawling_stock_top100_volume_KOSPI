@@ -11,12 +11,13 @@ res = urlopen(req)
 
 html = res.read().decode('cp949')
 soup = BeautifulSoup(html, 'html.parser')
-table = soup.find("table", { "class" : "type_2" })
+table = soup.find("table", {"class": "type_2"})
 
 rows = table.find_all('tr')
 
 data = []
 col_data = []
+
 for row in rows:
     cols = row.find_all('td')
     cols = [ele.text.strip() for ele in cols]
@@ -27,7 +28,6 @@ for row in rows:
     cols = [ele.text.strip() for ele in cols]
     if cols:
         col_data.append([ele for ele in cols if ele])  # Get rid of empty values
-
 
 df_data = pd.DataFrame(data).dropna()
 df_data.columns = col_data[0]
